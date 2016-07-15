@@ -1,14 +1,12 @@
 /*
 * YOUR PLUGINS goes here
 *
+* All plugins run client-side only.
+* A Topogram plugin is a Blaze template for Meteor
+* or some simple JS code running on the client.
 *
-* Mainly, a Topogram plugin is a Blaze template for Meteor.
-*
-* Each plugin should export an object containing :
-* - Blaze html : the html spacebars code to be used
-* - init : whatever initialization that needs to be done
-* - main : functions and anything else it actually does
+* Copy your plugins in the `/plugins` directory, then import the main JS file below
 *
 */
 
-import './plugins/topogram-plugin-map/map.js'
+// import './plugins/topogram-plugin-map/map.js'
