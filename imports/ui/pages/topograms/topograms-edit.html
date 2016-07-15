@@ -1,6 +1,11 @@
 <template name="topogramEdit">
   {{#if Template.subscriptionsReady }}
+    {{#each pluginTemplates  }}
+      {{> Template.dynamic template=this data=pluginData}}
+    {{/each}}
     {{> network network=networkInstance topogramId=topogramId readOnlyMode=false graphState=graphState}}
+
+
     <div id="toolkit" class="row">
         <div class="toolbox col s3">
           {{> titlebox topogramName=topogramName network=networkInstance editMode=true}}

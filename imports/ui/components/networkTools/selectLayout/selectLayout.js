@@ -1,7 +1,6 @@
 import './selectLayout.html'
 import { Template } from 'meteor/templating'
 
-import { hasGeo } from '../../map/map.js'
 import { $ } from 'meteor/jquery'
 import { Meteor } from 'meteor/meteor'
 
@@ -13,8 +12,6 @@ Template.selectLayout.helpers({
     layouts: function() {
       var layouts =  []
       // add map layout
-      if ( hasGeo() ) layouts.push("map")
-
       layouts.push(
         // 'dagre', // hierarchical ACL display, not useful for us
         'cose', // uncaught 'prototype' Error

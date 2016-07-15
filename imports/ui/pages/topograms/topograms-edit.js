@@ -19,6 +19,8 @@ import '../../components/networkTools/editMode/editMode.js'
 // import '../../components/boxes/algobox/algobox.js'
 // import '../../components/boxes/toolbox/toolbox.js'
 
+import { plugins } from '../../../plugins.js'
+
 Template.topogramEdit.helpers({
   networkInstance : function(){
     // console.log("ha", Template.instance().network)
@@ -33,6 +35,15 @@ Template.topogramEdit.helpers({
   },
   graphState : function() {
     return Template.instance().graphState
+  },
+  pluginTemplates : function() {
+    console.log(plugins);
+    return plugins
+  },
+  pluginData : function () { // expose data to plugins
+    return {
+      network : Template.instance().network
+    }
   }
 })
 
