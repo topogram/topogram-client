@@ -1,8 +1,9 @@
 import { Template } from 'meteor/templating'
 import * as _ from 'lodash'
 
-// register helpers
+import { plugins } from '../../plugins.js'
 
+// register helpers
 Template.registerHelper( 'objectToPairs', function( object ) {
     return _.map( object, function( value, key ) {
         return {
@@ -19,3 +20,6 @@ import '../../accounts.js'
 import './routes/routes.jsx'
 import './routes/topograms.jsx'
 import './routes/accounts.jsx'
+
+// register plugins
+import '../../pluginRegistry.js'

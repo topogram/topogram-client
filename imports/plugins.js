@@ -1,23 +1,18 @@
-import { logger } from "./logger.js"
-import * as NpmPackages from '../package.json'
+/*
+* YOUR PLUGINS goes here
+*
+*
+* Mainly, a Topogram plugin is a Blaze template for Meteor.
+*
+* Each plugin should export an object containing :
+* - Blaze html : the html spacebars code to be used
+* - init : whatever initialization that needs to be done
+* - main : functions and anything else it actually does
+*
+*/
 
-// List all plugins installed with npm
-var pluginNames = Object.keys(NpmPackages.dependencies).filter(function(plugin){
-  return plugin.startsWith("topogram-plugin")
-})
-logger.log("Topogram plugins registered : ",pluginNames);
+import './plugins/topogram-plugin-map/map.js'
 
-registerPlugins(pluginNames)
-
-// helpers to register plugins
-var plugins = {}
-function registerPlugins(pluginNames) {
-  pluginNames.forEach(function(pluginName){
-    logger.log("register " + pluginName)
-    try {
-        require(pluginName)
-    } catch (e) {
-      logger.error("a problem installing " + pluginName)
-    }
-  })
-}
+export const plugins = [
+  mapLayout
+]
