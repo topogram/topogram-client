@@ -39,6 +39,11 @@ Template.topogramEdit.helpers({
   pluginTemplates : function() {
     console.log(plugins);
     return plugins
+  },
+  pluginData : function () { // expose data to plugins
+    return {
+      network : Template.instance().network
+    }
   }
 })
 

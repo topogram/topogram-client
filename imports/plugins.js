@@ -9,7 +9,7 @@
 *
 */
 
-import './plugins/topogram-plugin-map/map.js'
+import './plugins/client/topogram-plugin-map/map.js'
 
 export const plugins = [
   "map"
