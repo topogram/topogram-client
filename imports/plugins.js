@@ -12,7 +12,3 @@
 */
 
 import './plugins/topogram-plugin-map/map.js'
-
-export const plugins = [
-  mapLayout
-]
