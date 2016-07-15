@@ -5,4 +5,4 @@ csv
 npm-debug.log
 node_modules
 updates
-imports/plugins/*
+imports/plugins*

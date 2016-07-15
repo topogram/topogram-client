@@ -3,6 +3,9 @@
     {{> network network=networkInstance topogramId=topogramId readOnlyMode=false graphState=graphState}}
     <div id="toolkit" class="row">
         <div class="toolbox col s3">
+          {{#each pluginTemplates  }}
+            {{> Template.dynamic template=this }}          
+          {{/each}}
           {{> titlebox topogramName=topogramName network=networkInstance editMode=true}}
           {{> searchBox network=networkInstance searchName="mainSearch" type="source" placeholder="Lookup a node"}}
           {{> sharebox }}

@@ -9,4 +9,8 @@
 *
 */
 
-// import './plugins/topogram-plugin-map/map.js'
+import './plugins/topogram-plugin-map/map.js'
+
+export const plugins = [
+  "map"
+] // name of the template to import

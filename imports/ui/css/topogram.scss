@@ -43,11 +43,11 @@ svg {
     overflow: visible !important;
 }
 
-#map, #algobox, #toolbox {
+#algobox, #toolbox {
   display: none;
 }
 
-#map, #network {
+#network {
     position: fixed;
     top: 0px;
     left: 0;
