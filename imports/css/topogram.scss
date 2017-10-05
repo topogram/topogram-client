@@ -28,7 +28,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  div{
+  .header-container{
     height: 300px;
     width: 100%;
     margin: auto;
@@ -50,7 +50,7 @@ body {
 
 .home-public-list{
   h5{
-    margin: 20px 20px 0;    
+    margin: 20px 20px 0;
   }
 }
 

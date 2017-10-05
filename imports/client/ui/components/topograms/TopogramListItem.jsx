@@ -2,7 +2,9 @@ import React, { PropTypes } from 'react'
 import moment from 'moment'
 // import { defineMessages, injectIntl } from 'react-intl'
 
-import { Card, CardActions, CardTitle } from 'material-ui/Card'
+import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card'
+
+import Markdown from '../markdown/Markdown.jsx'
 
 // import IconMenu from 'material-ui/IconMenu'
 // import IconButton from 'material-ui/IconButton'
@@ -22,6 +24,7 @@ import FlatButton from 'material-ui/FlatButton'
 
 const TopogramListItem = ({
   topogramTitle,
+  topogramDescription,
   topogramId,
   lastModified,
   // topogramSharedPublic,
@@ -33,7 +36,17 @@ const TopogramListItem = ({
       // title={<Link to={`/topograms/${topogramId}`}>{title}</Link>}
       titleStyle={{ fontSize:'13pt', lineHeight:'1.1em', paddingBottom : '.2em' }}
       subtitle={<span>{moment(lastModified).fromNow()}</span>}
+      actAsExpander={true}
+      showExpandableButton={!!topogramDescription}
     />
+    {
+      topogramDescription?
+      <CardText expandable={true}>
+        <Markdown source={topogramDescription} />
+      </CardText>
+      :
+      null
+    }
     <CardActions>
       <FlatButton
         href={`/topograms/${topogramId}`}
@@ -58,6 +71,7 @@ const TopogramListItem = ({
 
 TopogramListItem.propTypes = {
   topogramTitle: PropTypes.string.isRequired,
+  topogramDescription: PropTypes.string,
   topogramId: PropTypes.string.isRequired,
   lastModified: PropTypes.instanceOf(Date).isRequired
 }

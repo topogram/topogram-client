@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Card, CardTitle, CardText } from 'material-ui/Card'
 
-import Markdown from 'react-remarkable'
-import 'github-markdown-css'
-
+import Markdown from '../markdown/Markdown.jsx'
 
 const SelectedItem = ({ title, group, children, notes }) => (
   <Card>

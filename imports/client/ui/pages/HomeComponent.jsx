@@ -1,40 +1,11 @@
 import React from 'react'
 import Snackbar from 'material-ui/Snackbar'
 
-import { FormattedMessage, defineMessages } from 'react-intl'
-import TopogramList from '/imports/client/ui/components/topograms/TopogramList.jsx'
+import TopogramList from '../components/topograms/TopogramList.jsx'
+import HomeHeader from '../components/home/HomeHeader.jsx'
+import Features from '../components/home/Features.jsx'
+import CallToAction from '../components/home/CallToAction.jsx'
 
-const messages = defineMessages({
-  tagline : {
-    'id': 'home.tagline',
-    'defaultMessage': 'Social Network Analysis for humans.',
-    'message': 'Social Network Analysis for humans.'
-  },
-  subtitle : {
-    'id': 'home.subtitle',
-    'defaultMessage': 'An open-source toolkit to process, visualize and analyze networks.',
-    'message': 'An open-source toolkit to process, visualize and analyze networks.'
-  },
-  browseTopograms: {
-    'id': 'home.browseTopograms',
-    'defaultMessage': 'Browse publics topograms',
-    'message': 'Browse publics topograms'
-  }
-})
-
-const HomeHeader = () => (
-  <section
-    className="home-header"
-  >
-    <div>
-      <h1>Topogram</h1>
-      <h4>
-        <FormattedMessage {...messages.tagline} />
-      </h4>
-      <p><FormattedMessage {...messages.subtitle} /></p>
-    </div>
-  </section>
-)
 
 // define and export our Welcome component
 export class HomeComponent extends React.Component {
@@ -81,11 +52,10 @@ export class HomeComponent extends React.Component {
       <div>
         <HomeHeader />
 
-        {/* <TopogramAddForm
-          promptSnackbar={this.promptSnackbar}
 
-          /> */}
+        <Features />
 
+        <CallToAction />
 
         <TopogramList
           topograms={this.props.topograms}

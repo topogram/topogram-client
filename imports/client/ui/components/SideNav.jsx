@@ -21,6 +21,7 @@ class SideNav extends React.Component {
     userId : PropTypes.string,
     topogramId : PropTypes.string,
     topogramTitle : PropTypes.string,
+    topogramDescription : PropTypes.string,
     topogramIsPublic : PropTypes.bool,
     router : PropTypes.object
   }
@@ -46,6 +47,7 @@ class SideNav extends React.Component {
       authorIsLoggedIn,
       topogramId,
       topogramTitle,
+      topogramDescription,
       topogramIsPublic
     } = this.props
     const {
@@ -59,6 +61,7 @@ class SideNav extends React.Component {
           topogramId={topogramId}
           topogramTitle= {topogramTitle}
           topogramSharedPublic={topogramIsPublic}
+          topogramDescription={topogramDescription}
           router={this.props.router}
         />)
         :

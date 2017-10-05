@@ -12,9 +12,9 @@ const {
 } = createReactiveMiddlewares(Tracker)
 
 const middlewares = [ sources, subscriptions, thunk ]
-if (process.env.NODE_ENV !== 'production') {
-  middlewares.push(createLogger())
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   middlewares.push(createLogger())
+// }
 
 const store = createStore(rootReducer, compose(
   applyMiddleware(...middlewares),
