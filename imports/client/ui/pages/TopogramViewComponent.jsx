@@ -268,6 +268,7 @@ export class TopogramViewComponent extends React.Component {
       //&&
        new Date(n.data.start) >= new Date(this.props.ui.minTime)
        && new Date(this.props.ui.currentSliderTime) >= new Date(n.data.start)
+       && new Date(this.props.ui.maxTime) <= new Date(n.data.end)
       :
       true
 
