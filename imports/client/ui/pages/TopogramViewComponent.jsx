@@ -263,9 +263,11 @@ export class TopogramViewComponent extends React.Component {
     } = this.props
 
     const filterTime = (n) => hasTimeInfo ?
-      new Date(this.props.ui.maxTime) >= new Date(n.data.end)
-      && new Date(this.props.ui.currentSliderTime) >= new Date(n.data.end)
-      && new Date(n.data.start) >= new Date(this.props.ui.minTime)
+      //new Date(this.props.ui.maxTime) >= new Date(n.data.end)
+      //&& new Date(this.props.ui.currentSliderTime) >= new Date(n.data.end)
+      //&&
+       new Date(n.data.start) >= new Date(this.props.ui.minTime)
+       && new Date(this.props.ui.currentSliderTime) >= new Date(n.data.start)
       :
       true
 
