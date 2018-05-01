@@ -20,6 +20,7 @@ const TitleBox = ({
 
   isolateMode,
   handleEnterIsolateMode,
+  handleEnterExtractMode,
   handleExitIsolateMode,
 
   focusElement,
@@ -61,12 +62,21 @@ const TitleBox = ({
               onClick={handleExitIsolateMode}
               />
             :
+            <div>
             <RaisedButton
-              label="Focus"
+              label="Focus and rearrange"
               labelPosition="before"
               icon={<FocusIcon />}
               onClick={handleEnterIsolateMode}
               />
+
+              <RaisedButton
+                label="Focus only"
+                labelPosition="before"
+                icon={<FocusIcon />}
+                onClick={handleEnterExtractMode}
+                />
+              </div>
           }
       </CardActions>
       :

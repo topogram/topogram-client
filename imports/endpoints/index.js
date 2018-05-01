@@ -192,8 +192,15 @@ Api.addCollection(Edges, {
     post: {
       authRequired: true,
       action() {
-        const edges = this.bodyParams.edges
         const topogramId = this.bodyParams.topogramId
+        const edges = this.bodyParams.edges
+        .map( n=> {
+          const { data } = n
+          if (data.start) data.start = new Date(n.data.start)
+          if (data.end) data.end = new Date(n.data.end)
+          return { data }
+        })
+
         const data = createEdges( topogramId, edges )
         return buildSuccessAnswer({ statusCode : 201, data })
       }

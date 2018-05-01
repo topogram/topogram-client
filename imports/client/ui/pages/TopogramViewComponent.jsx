@@ -132,6 +132,56 @@ export class TopogramViewComponent extends React.Component {
     })
   }
 
+  handleEnterExtractMode = () => {
+
+    const {
+      cy,
+      selectedElements,
+      isolateMode
+    } = this.props.ui
+
+    // store previous nodes position
+    const prevPositions = {}
+    if (!isolateMode) {
+      cy.nodes().forEach(n =>
+        prevPositions[n.id()] = {...n.position()}
+      )
+      this.props.updateUI('prevPositions', {...prevPositions})
+    }
+
+    // isolate mode ON
+    this.props.updateUI('isolateMode', true)
+
+    // get my nodes/edges
+    const selectedIds = selectedElements.map(e => e.data.id)
+    const focusedNodes = cy.filter((i, e) =>
+      selectedIds.includes(e.id())
+    )
+
+    cy.nodes().style({ 'opacity': '0' });
+    cy.edges().style({ 'opacity': '0' });
+
+    // select ,need to catch type error since layout is not redefined, but it is OK for what we want
+    try {
+      var subGraph = focusedNodes.openNeighborhood();
+      focusedNodes.style({ 'opacity': '1' });
+      subGraph.style({ 'opacity': '1'});
+
+    } catch (e) {
+      console.log(e instanceof TypeError);
+    }
+    // apply focus layout
+    // subGraph.layout({
+    //   'name':"spread",
+    //   'minDist' : 30,
+    //   'padding' : 50
+    // })
+    //this.layout.stop()
+//console.log(layout);
+  }
+
+
+
   handleExitIsolateMode = () => {
 
     const {
@@ -263,9 +313,11 @@ export class TopogramViewComponent extends React.Component {
     } = this.props
 
     const filterTime = (n) => hasTimeInfo ?
-      new Date(this.props.ui.maxTime) >= new Date(n.data.end)
-      && new Date(this.props.ui.currentSliderTime) >= new Date(n.data.end)
-      && new Date(n.data.start) >= new Date(this.props.ui.minTime)
+      //new Date(this.props.ui.maxTime) >= new Date(n.data.end)
+      //&& new Date(this.props.ui.currentSliderTime) >= new Date(n.data.end)
+      //&&
+       new Date(n.data.start) >= new Date(this.props.ui.minTime)
+       && new Date(this.props.ui.currentSliderTime) >= new Date(n.data.start)
       :
       true
 
@@ -289,7 +341,12 @@ export class TopogramViewComponent extends React.Component {
     const nodeIds = nodes.map(n => n.data.id)
 
     const edges = this.props.edges
-      .filter(e =>
+
+      .filter(e => hasTimeInfo ?
+        new Date(e.data.start) >= new Date(this.props.ui.minTime)
+        && new Date(this.props.ui.currentSliderTime) >= new Date(e.data.start)
+        && nodeIds.includes(e.data.source) && nodeIds.includes(e.data.target)
+       :
         nodeIds.includes(e.data.source) && nodeIds.includes(e.data.target)
       )
 
@@ -333,6 +390,7 @@ export class TopogramViewComponent extends React.Component {
           onUnfocusElement={this.onUnfocusElement}
           isolateMode={this.props.ui.isolateMode}
           handleEnterIsolateMode={this.handleEnterIsolateMode}
+          handleEnterExtractMode={this.handleEnterExtractMode}
           handleExitIsolateMode={this.handleExitIsolateMode}
           selectElement={this.selectElement}
           unselectAllElements={this.unselectAllElements}
