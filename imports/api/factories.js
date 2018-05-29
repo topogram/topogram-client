@@ -1,14 +1,26 @@
 import faker from 'faker'
 import { Factory } from 'meteor/dburles:factory'
 
-import { Topograms } from './topograms/Topograms.js'
-import { Nodes } from './nodes/Nodes.js'
-import { Edges } from './edges/Edges.js'
+import {
+  Topograms,
+  Nodes,
+  Edges,
+  Views
+} from './collections.js'
 
 Factory.define('topogram', Topograms, {
   createdAt: () => new Date(),
   title: () => 'New Topogram',
   slug : () => faker.helpers.slugify('New Topogram'),
+  description : () => faker.lorem.paragraph()
+})
+
+Factory.define('view', Views, {
+  createdAt: () => new Date(),
+  topogramId: Factory.get('topogram'),
+  title: () => 'New View',
+  slug : () => faker.helpers.slugify('New View'),
+  nodesPositions : [],
   description : () => faker.lorem.paragraph()
 })
 

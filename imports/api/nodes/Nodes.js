@@ -123,7 +123,7 @@ Nodes.schema = new SimpleSchema({
     type: Date,
     label: 'Time when the node was created',
     autoValue() {
-      return this.isInsert ? new Date() : this.value 
+      return this.isInsert ? new Date() : this.value
     }
   }
 })
