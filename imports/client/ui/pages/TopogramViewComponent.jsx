@@ -380,7 +380,6 @@ export class TopogramViewComponent extends React.Component {
           hasTimeInfo={ this.props.hasTimeInfo }
           hasGeoInfo={ this.props.hasGeoInfo }
         />
-
         <TitleBox
           topogramTitle={ this.props.topogram.title }
           selectedElements={this.props.ui.selectedElements}

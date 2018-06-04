@@ -3,14 +3,15 @@ import React, { PropTypes } from 'react'
 import Subheader from 'material-ui/Subheader'
 
 import TopogramTogglePublic from './TopogramTogglePublic.jsx'
-import TopogramEditTitle from './TopogramEditTitle.jsx'
+import TopogramEdit from './TopogramEdit.jsx'
 import TopogramDelete from './TopogramDelete.jsx'
 
 const Settings = ({
   topogramTitle,
   topogramId,
   router,
-  topogramSharedPublic
+  topogramSharedPublic,
+  topogramDescription
 }) => (
   <span>
     <Subheader>Settings</Subheader>
@@ -19,9 +20,10 @@ const Settings = ({
       topogramSharedPublic={topogramSharedPublic}
       key="ToggleTopogramPublicButton"
     />
-    <TopogramEditTitle
-      topogramTitle= {topogramTitle}
+    <TopogramEdit
       topogramId={topogramId}
+      topogramTitle= {topogramTitle}
+      topogramDescription={topogramDescription}
       key="EditTopogramTitle"
     />
     <TopogramDelete
@@ -36,6 +38,7 @@ const Settings = ({
 Settings.propTypes = {
   topogramId: PropTypes.string.isRequired,
   topogramTitle: PropTypes.string.isRequired,
+  topogramDescription: PropTypes.string,
   topogramSharedPublic: PropTypes.bool.isRequired,
   router: PropTypes.object.isRequired
 }
