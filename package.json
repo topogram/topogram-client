@@ -4,7 +4,7 @@
   "description": "Real-time collaborative social network analysis toolkit",
   "main": "topogram.js",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^5.0.0",
     "cytoscape": "2.7.2",
     "cytoscape-cola": "^1.4.1",
     "cytoscape-cxtmenu": "^2.7.1",
