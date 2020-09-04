@@ -25,7 +25,7 @@
     "meteor-redux-middlewares": "^3.0.4",
     "moment": "^2.14.1",
     "nouislider": "^8.5.1",
-    "papaparse": "^4.1.2",
+    "papaparse": "^5.2.0",
     "prop-types": "^15.5.10",
     "rc-slider": "^8.3.1",
     "react": "^15.4.2",
